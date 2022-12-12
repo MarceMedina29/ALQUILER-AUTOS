@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import co.edu.unab.apirestaa.Servicios.PersonasServicio;
 import co.edu.unab.apirestaa.modelos.PersonasModelo;
-import co.edu.unab.apirestaa.repositorios.PersonasRepositorio;
 
 @RestController
 @RequestMapping("/Personas")
@@ -20,27 +21,31 @@ import co.edu.unab.apirestaa.repositorios.PersonasRepositorio;
 public class PersonasControlador {
     
     @Autowired
-    PersonasRepositorio personasRepositorio;
+    PersonasServicio personasServicio;
 
     @GetMapping()
-    public List<PersonasModelo> getallPersonas(){
-        return personasRepositorio.findAll();
+    public List<PersonasModelo> getallPersonasOrder(){
+        return personasServicio.getListPersonasOrder();
     }
+
+    @GetMapping("/{id}")
+    public Optional<PersonasModelo> findPersonasByID(@PathVariable("id") String id){
+        return personasServicio.getPersonasById(id);
+    }
+
+    @GetMapping("/query") // ejemplo: http://localhost:8080/personas/query?apellidos=medina
+    public List<PersonasModelo> getPersonasByApellidos(@RequestParam("apellidos") String apellidos){
+        return personasServicio.getPersonasByApellidos(apellidos); 
+    }
+    
     @PostMapping()
-    public PersonasModelo savePersonas(@RequestBody PersonasModelo personas){
-        return personasRepositorio.save(personas);
+    public String savePersonas(@RequestBody PersonasModelo personas){
+        return personasServicio.guardarPersonas(personas);
     }
 
     @DeleteMapping("/{id}")
     public String deletePersonasById(@PathVariable("id")String id){
-        
-        if(personasRepositorio.existsById(id)){
-            Optional <PersonasModelo> personas = personasRepositorio.findById(id);
-            personasRepositorio.deleteById(id);
-            return "Personas" + personas.get().getNombres()+"Eliminado";
-        }else{
-            return "No Eliminado";
-        }
+        return personasServicio.eliminarPersonasPorId(id);
             
     }
 }
