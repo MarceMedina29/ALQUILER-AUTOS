@@ -1,11 +1,10 @@
 package co.edu.unab.apirestaa.modelos;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,11 +21,11 @@ public class RegistroAlquilerModelo {
     @Id
     private String id;
     @Field("fechaSolicitud")
-    private Date fechaSolicitud;
+    private LocalDate fechaSolicitud;
     @Field("fechaEntrega")
-    private Date fechaEntrega;
+    private LocalDate fechaEntrega;
     @Field("fechaRecibido")
-    private Date fechaRecibido;
+    private LocalDate fechaRecibido;
     @Field("KilometrajeEntrega")
     private Integer KilometrajeEntrega;
     @Field("KilometrajeRecibido")

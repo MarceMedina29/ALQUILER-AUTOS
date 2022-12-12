@@ -49,4 +49,12 @@ public class PersonasServicio {
             return "No Eliminado";
         }
     }
+
+    public List<PersonasModelo> personasByNumerodelicencia(Long numerodelicencia){
+        return personasRepositorio.buscarPorNumeroDeLicencia(numerodelicencia);
+    }
+
+    public List<PersonasModelo>personasByNumeroDeDocumento(Long numerodedocumento){
+        return personasRepositorio.buscarPersonasPorNumeroDeDocumento(numerodedocumento);
+    }
 }

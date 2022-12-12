@@ -30,6 +30,6 @@ public class AutosModelo {
     @DBRef
     private CategoriaAutosModelo categoriaAutosId;
     @DBRef
-    private MarcaAutosModelo marcaAutoslId;
+    private MarcaAutosModelo marcaAutosId;
 
 }

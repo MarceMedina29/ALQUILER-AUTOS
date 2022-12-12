@@ -37,6 +37,15 @@ public class PersonasControlador {
     public List<PersonasModelo> getPersonasByApellidos(@RequestParam("apellidos") String apellidos){
         return personasServicio.getPersonasByApellidos(apellidos); 
     }
+
+    @GetMapping("/numerodedocumento/query")
+    public List<PersonasModelo> listPersonasNumeroDeDocumento(@PathVariable("numerodedocumento") Long numerodedocumento){
+        return personasServicio.personasByNumeroDeDocumento(numerodedocumento);
+    }
+    @GetMapping("/numerodelicencia/{numerodelicencia}")
+    public List<PersonasModelo> listPersonasNumeroDeLicencia(@PathVariable("numerodelicencia") Long numerodelicencia){
+        return personasServicio.personasByNumerodelicencia(numerodelicencia);
+    }
     
     @PostMapping()
     public String savePersonas(@RequestBody PersonasModelo personas){

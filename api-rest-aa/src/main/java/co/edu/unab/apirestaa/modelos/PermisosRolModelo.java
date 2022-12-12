@@ -22,7 +22,9 @@ public class PermisosRolModelo {
     private String nombreDelPermiso;
     @Field("rutaPermiso")
     private String rutaPermiso;
+    @Field("estado")
+    private Boolean estado;
     @DBRef
-    private RolModelo RolId;
+    private RolModelo rolId;
 
 }
