@@ -1,4 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom"
+import { BlockPage } from "./components/BlockPage"
 import { ContactPage } from "./components/ContactPage"
 import {HomePage} from "./components/HomePage"
 import { MenuNav } from "./components/MenuNav"
@@ -14,6 +15,7 @@ function App() {
         <Route>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/contacto" element={<ContactPage/>}/>
+          <Route path="/blog" element={<BlockPage/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>

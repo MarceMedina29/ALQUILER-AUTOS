@@ -12,7 +12,8 @@ function MenuNav(){
                 <li>
                     <Link to="/contacto">Contacto</Link>
                 </li>
-                <li>Ayuda
+                <li>
+                     <Link to="/blog">Blog</Link>
                 </li>
             </ul>
         </div>
